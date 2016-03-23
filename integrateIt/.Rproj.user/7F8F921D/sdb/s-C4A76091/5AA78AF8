@@ -1,0 +1,18 @@
+{
+    "contents" : "###\n### Mid-Term Exam\n### Taishi Muraoka\n### March 24\n###\n\n\n\n##\n## setup\n##\nlibrary(devtools);library(roxygen2)\n\nsetwd(\"C:/Users/Taishi/Documents/zzzzzzzzzzzzz\")\n\ncurrent.code <- as.package(\"MTpack\")\n\nload_all(current.code)\n\ndocument(current.code)\n",
+    "created" : 1458773119638.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3079291605",
+    "id" : "5AA78AF8",
+    "lastKnownWriteTime" : 1458773159,
+    "path" : "~/MidTermExam/Muraoka_MidTermExam.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
