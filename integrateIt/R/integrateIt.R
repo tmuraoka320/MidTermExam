@@ -76,6 +76,7 @@ setMethod("integrateIt",
             if(a < min(x)){
               stop("a should be greater than the minimum of x!")
             }
+            # check if b is smaller than max(x)
             if(b > max(x)){
               stop("b should be smaller than the maximum of x!")
             }
