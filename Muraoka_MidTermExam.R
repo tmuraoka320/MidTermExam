@@ -43,6 +43,8 @@ integrateIt(myx, myy, 1:3, myb, Trap=TRUE) # error because a is not a single num
 
 integrateIt(myx, myy, "a", myb, Trap=TRUE) # error because a is not numeric
 
+integrateIt(myx, myy, 4, 2, Trap=TRUE) # error because a is greater than b
+
 print(trap_test) # print class "Trap"
 
 plot(trap_test, "ANY") # plot class "Trap"
@@ -67,3 +69,27 @@ plot(simpson_test, "ANY") # plot class "Simpson
 ##
 ## test tolTest()
 ##
+help(tolTest)
+
+myfun <- function(x){
+  return(sqrt(sin(x)^3 + 1))
+}
+
+plot(0:50, myfun(0:50), type="l", # the function behaves like this
+     xlab="x", ylab="y")
+
+mytolerance <- 0.05
+
+mya <- 0
+
+myb <- 10
+
+mystart <- 2
+
+mycorrect <- as.numeric(integrate(myfun, 0, 10)$value)
+
+# Trapezoidal rule
+tolTest(myfun, mytolerance, mya, myb, Trap=TRUE, mystart, mycorrect)
+
+# Simpson rule
+tolTest(myfun, mytolerance, mya, myb, Trap=FALSE, mystart, mycorrect)

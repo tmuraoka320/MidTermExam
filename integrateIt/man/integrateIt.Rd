@@ -13,9 +13,9 @@ integrateIt(x, y, a, b, Trap = TRUE, ...)
 
 \item{y}{A numeric vector y (= f(x))}
 
-\item{a}{A starting value}
+\item{a}{A starting value (a should be smaller than b)}
 
-\item{b}{An ending value}
+\item{b}{An ending value (b should be greater than b)}
 
 \item{Trap}{A rule argument. If TRUE, the Trapezoidal rule is applied. If FALSE, the Simpson rule is applied. Defalt is TRUE.}
 }

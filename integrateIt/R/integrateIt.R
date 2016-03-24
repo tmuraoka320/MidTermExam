@@ -5,8 +5,8 @@
 #'
 #' @param x A numeric vector x
 #' @param y A numeric vector y (= f(x))
-#' @param a A starting value
-#' @param b An ending value
+#' @param a A starting value (a should be smaller than b)
+#' @param b An ending value (b should be greater than b)
 #' @param Trap A rule argument. If TRUE, the Trapezoidal rule is applied. If FALSE, the Simpson rule is applied. Defalt is TRUE.
 #'
 #'
@@ -68,6 +68,10 @@ setMethod("integrateIt",
             if(length(a) != 1 | length(b) != 1){
               stop("a and b should be length 1")
             }
+            # check if a is smaller than b
+            if(a >= b){
+              stop("a should be smaller than b!")
+            }
             subx <- x[which(x >= a & x <= b)] # limit the range of x to a-b
             suby <- y[which(x >= a & x <= b)] # limit the range of y based on a-b
             if(Trap==TRUE){ # if the Trapezoida rule is required
@@ -100,19 +104,19 @@ setMethod("plot", "Trap",
           function(x, y){
             if(class(x)=="Trap"){ # if class is "Trap"
               plot(x@x, x@y, type="n",
-                   main="The Visual Result from the Trapezoidal Rule",
+                   main="The Result from the Trapezoidal Rule",
                    xlab="x", ylab="f(x)",
                    xlim=c(min(x@x), max(x@x)), ylim=c(min(c(min(x@y), 0)),
-                                                      max(c(max(x@y), 0))))
+                                                      max(c(max(x@y), 0)))) # this ylim should automatically give a right range
               polygon(c((seq(min(x@x), max(x@x), length.out=length(x@x))),
                         rev(seq(min(x@x), max(x@x), length.out=length(x@x)))),
                       c(rep(0, times=length(x@y)), rev(x@y)),
                       border=NA, col=rgb(0,0.9,0.3,0.3)) # color the region of integration
               mapply(function(p,q){segments(p, 0, p, q, lty=2, col="green4")},
-                     p=x@x, q=x@y) # draw dotted lines of intervals
+                     p=x@x, q=x@y) # draw vertical dotted lines of intervals
               sapply(1:(length(x@x)-1),
                      function(p){segments(x@x[p], x@y[p], x@x[p+1], x@y[p+1],
-                                          lwd=2, col="green4")}) # draw straight lines connecting each interval
+                                          lwd=2, col="green4")}) # draw straight lines connecting intervals
               abline(h=0, lty=3) # draw a horizontal line at y=0
             }
             else{ # if class is "Simpson"
@@ -121,7 +125,7 @@ setMethod("plot", "Trap",
                 stop("the distance between two neighboring values should be same in x!") # if the lengths of intervals differ, return this error
               }
               plot(x@x, x@y, type="n",
-                   main="The Visual Result from the Simpson Rule",
+                   main="The Result from the Simpson Rule",
                    xlab="x", ylab="f(x)",
                    xlim=c(min(x@x), max(x@x)), ylim=c(min(c(min(x@y), 0)),
                                                       max(c(max(x@y), 0))))
@@ -139,10 +143,10 @@ setMethod("plot", "Trap",
                 polygon(c(seqx, rev(seqx)),
                         c(rep(0, times=length(sval)), rev(sval)),
                         border=NA, col="plum1") # color the region of integration
-                lines(seqx, sval, lwd=2, col="darkviolet") # draw a line of each parabola
+                lines(seqx, sval, lwd=2, col="darkviolet") # draw a curve line of each parabola
               })
               mapply(function(p,q){segments(p, 0, p, q, lty=2, col="darkviolet")},
-                     p=x@x, q=x@y) # draw dotted lines of intervals
+                     p=x@x, q=x@y) # draw vertical dotted lines of intervals
               abline(h=0, lty=3) # a horizontal line at y=0
             }
           })
