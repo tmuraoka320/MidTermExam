@@ -45,6 +45,8 @@ integrateIt(myx, myy, "a", myb, Trap=TRUE) # error because a is not numeric
 
 integrateIt(myx, myy, 4, 2, Trap=TRUE) # error because a is greater than b
 
+integrateIt(myx, myy, mya, 200, Trap=TRUE) # error because b is greater than max(x)
+
 print(trap_test) # print class "Trap"
 
 plot(trap_test, "ANY") # plot class "Trap"

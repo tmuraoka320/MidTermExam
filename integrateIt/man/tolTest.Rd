@@ -35,7 +35,7 @@ An object of class "Tol" containing
  \item{abs_error}{The absolute error of the estimate}
 }
 \description{
-Conduct a tolerance test with S4 class "Tol"
+Conduct a tolerance test and return an object with S4 class "Tol"
 }
 \examples{
 myfun <- function(x){

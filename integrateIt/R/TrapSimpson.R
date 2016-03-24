@@ -30,7 +30,7 @@ setMethod("initialize", "Trap",
           })
 
 #' @export
-setClass(Class="Simpson", # "Simpson" is a subset of "Trap"
+setClass(Class="Simpson", # "Simpson" is a subclass of "Trap"
          contain="Trap",
          slots=list(x="vector",
                     y="vector",

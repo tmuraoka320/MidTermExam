@@ -6,7 +6,7 @@
 #' @param x A numeric vector x
 #' @param y A numeric vector y (= f(x))
 #' @param a A starting value (a should be smaller than b)
-#' @param b An ending value (b should be greater than b)
+#' @param b An ending value (b should be greater than a)
 #' @param Trap A rule argument. If TRUE, the Trapezoidal rule is applied. If FALSE, the Simpson rule is applied. Defalt is TRUE.
 #'
 #'
@@ -71,6 +71,13 @@ setMethod("integrateIt",
             # check if a is smaller than b
             if(a >= b){
               stop("a should be smaller than b!")
+            }
+            # check if a is larger than min(x)
+            if(a < min(x)){
+              stop("a should be greater than the minimum of x!")
+            }
+            if(b > max(x)){
+              stop("b should be smaller than the maximum of x!")
             }
             subx <- x[which(x >= a & x <= b)] # limit the range of x to a-b
             suby <- y[which(x >= a & x <= b)] # limit the range of y based on a-b

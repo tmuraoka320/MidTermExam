@@ -1,6 +1,6 @@
 #' Tolerance Test with class "Tol"
 #'
-#' Conduct a tolerance test with S4 class "Tol"
+#' Conduct a tolerance test and return an object with S4 class "Tol"
 #'
 #'
 #' @param fun A function
