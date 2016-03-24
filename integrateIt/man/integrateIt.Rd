@@ -2,7 +2,8 @@
 % Please edit documentation in R/integrateIt.R
 \name{integrateIt}
 \alias{integrateIt}
-\alias{integrateIt,ANY-method}
+\alias{integrateIt,ANY-method,}
+\alias{plot,Trap-Simpson-method}
 \title{Create an Object with class "Trap" or "Simpson"}
 \usage{
 integrateIt(x, y, a, b, Trap = TRUE, ...)

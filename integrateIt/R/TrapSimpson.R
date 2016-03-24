@@ -30,7 +30,7 @@ setMethod("initialize", "Trap",
           })
 
 #' @export
-setClass(Class="Simpson",
+setClass(Class="Simpson", # "Simpson" is a subset of "Trap"
          contain="Trap",
          slots=list(x="vector",
                     y="vector",
@@ -60,4 +60,4 @@ print.Trap <- function(Trap_or_Simpson_object){
   cat(sprintf("An object of class '%s'", class(Trap_or_Simpson_object)))
   cat("\nresult:\n")
   print(Trap_or_Simpson_object@result)
-}
+} # print method provides the class of an object and the result of the rules
